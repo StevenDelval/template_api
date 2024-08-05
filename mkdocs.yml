@@ -4,7 +4,14 @@ nav: # on définit l'architecture de la doc en faisant les liens vers les fichie
   - Documentation:
       - Introduction: api/introduction.md
       - API:
+          - main: api/main.md
+          - database: api/database.md
+          - models: api/models.md
           - crud: api/crud.md
+          - auth: api/auth.md
+          - router:
+            - user_router: api/router/user_router.md
+            - data_router: api/router/data_router.md
 
 theme:
   name: readthedocs #on peut utiliser d'autre theme de doc
