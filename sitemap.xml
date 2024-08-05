@@ -6,12 +6,42 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://StevenDelval.github.io/template_api/api/auth/</loc>
+         <lastmod>2024-08-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://StevenDelval.github.io/template_api/api/crud/</loc>
          <lastmod>2024-08-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://StevenDelval.github.io/template_api/api/database/</loc>
+         <lastmod>2024-08-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://StevenDelval.github.io/template_api/api/introduction/</loc>
+         <lastmod>2024-08-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://StevenDelval.github.io/template_api/api/main/</loc>
+         <lastmod>2024-08-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://StevenDelval.github.io/template_api/api/models/</loc>
+         <lastmod>2024-08-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://StevenDelval.github.io/template_api/api/router/data_router/</loc>
+         <lastmod>2024-08-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://StevenDelval.github.io/template_api/api/router/user_router/</loc>
          <lastmod>2024-08-05</lastmod>
          <changefreq>daily</changefreq>
     </url>

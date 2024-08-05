@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://StevenDelval.github.io/template_api/api/introduction/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://StevenDelval.github.io/template_api/api/database/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Introduction - template_api</title>
+    <title>database - template_api</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -13,9 +13,9 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Introduction";
-        var mkdocs_page_input_path = "api/introduction.md";
-        var mkdocs_page_url = "/template_api/api/introduction/";
+        var mkdocs_page_name = "database";
+        var mkdocs_page_input_path = "api/database.md";
+        var mkdocs_page_url = "/template_api/api/database/";
       </script>
     
     <!--[if lt IE 9]>
@@ -46,21 +46,15 @@
               </ul>
               <p class="caption"><span class="caption-text">Documentation</span></p>
               <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Introduction</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#code-structure">Code Structure</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#endpoints">Endpoints</a>
-    </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../introduction/">Introduction</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" >API</a>
-    <ul>
+                  <li class="toctree-l1 current"><a class="reference internal current" >API</a>
+    <ul class="current">
                 <li class="toctree-l2"><a class="reference internal" href="../main/">main</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../database/">database</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">database</a>
+    <ul class="current">
+    </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../models/">models</a>
                 </li>
@@ -94,9 +88,10 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Documentation</li>
-      <li class="breadcrumb-item active">Introduction</li>
+          <li class="breadcrumb-item">API</li>
+      <li class="breadcrumb-item active">database</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/StevenDelval/template_api/edit/master/docs/api/introduction.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/StevenDelval/template_api/edit/master/docs/api/database.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
   <hr/>
@@ -104,19 +99,121 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="documentation-api">Documentation API</h1>
-<h2 id="introduction">Introduction</h2>
-<h2 id="code-structure">Code Structure</h2>
-<ul>
-<li><strong>main.py</strong>: The entry point of the API application. It initializes the FastAPI application, sets up routing, and may include logic for starting the server.</li>
-</ul>
-<h2 id="endpoints">Endpoints</h2>
+                <h2 id="database-api">DATABASE API</h2>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="api.database"></a>
+    <div class="doc doc-contents first">
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="api.database.get_db" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_db</span><span class="p">()</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Dependency that provides a SQLAlchemy database session.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Yields:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b></code>Session</code></b>              –
+              <div class="doc-md-description">
+                <p>A SQLAlchemy session instance that is used to interact with the database.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<details class="notes" open>
+  <summary>Notes</summary>
+  <p>The session is created and yielded for use in database operations. After the operation, 
+the session is closed to release the database connection.</p>
+</details>
+            <details class="quote">
+              <summary>Source code in <code>api/database.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_db</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Dependency that provides a SQLAlchemy database session.</span>
+
+<span class="sd">    Yields:</span>
+<span class="sd">        Session: A SQLAlchemy session instance that is used to interact with the database.</span>
+
+<span class="sd">    Notes:</span>
+<span class="sd">        The session is created and yielded for use in database operations. After the operation, </span>
+<span class="sd">        the session is closed to release the database connection.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="n">Session</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">db</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../.." class="btn btn-neutral float-left" title="Accueil"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../main/" class="btn btn-neutral float-right" title="main">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../main/" class="btn btn-neutral float-left" title="main"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../models/" class="btn btn-neutral float-right" title="models">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -143,10 +240,10 @@
         </span>
     
     
-      <span><a href="../.." style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../main/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../main/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../models/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
