@@ -10,8 +10,7 @@ import crud, auth, schemas
 router = APIRouter()
 
 
-@router.post("/create_access_token")
-def create_access_token( db: Session = Depends(get_db)):
-    
+@router.post("/hello")
+def get_hello():
     return "Hello !"
 
