@@ -2,7 +2,7 @@ from fastapi import FastAPI, Depends
 from fastapi.params import Depends
 from models import Base
 from database import engine
-import user_router, auth, data_router
+import router.user_router as user_router, auth, router.data_router as data_router
 
 app = FastAPI()
 
