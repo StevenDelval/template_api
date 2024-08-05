@@ -41,11 +41,12 @@ The Template API project is organized into several key files and directories, ea
 
 - **schemas.py**: Defines the Pydantic models (schemas) used for request and response validation.
 
+- **.env**: Environment configuration file where sensitive data and configuration parameters such as database credentials and secret keys are stored.
+
 - **router/**
   - **user_router.py**: Contains the routes and logic related to user management, including endpoints for user creation and token generation.
   - **data_router.py**: Contains the routes and logic for managing data entities.
 
-- **.env**: Environment configuration file where sensitive data and configuration parameters such as database credentials and secret keys are stored.
 
 
 ## Environment Variable Structure
