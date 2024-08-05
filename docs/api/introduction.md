@@ -52,23 +52,24 @@ The Template API project is organized into several key files and directories, ea
 
 The environment variables are used to configure various aspects of the Template API application. These variables are typically stored in a `.env` file and are loaded into the application to set up database connections, authentication, and other configurations. Below is the structure of the `.env` file along with explanations for each variable:
 
-```ini
-# Determines whether to use PostgreSQL or SQLite as the database.
-# 1 for PostgreSQL, 0 for SQLite
-IS_POSTGRES=0
+```python
+    # Determines whether to use PostgreSQL or SQLite as the database.
+    # 1 for PostgreSQL, 0 for SQLite
+    IS_POSTGRES=0
 
-# PostgreSQL Configuration (used if IS_POSTGRES is set to 1)
-DB_USERNAME=""           # The username for the PostgreSQL database
-DB_HOSTNAME=""           # The hostname or IP address of the PostgreSQL server
-DB_PORT=""               # The port number on which the PostgreSQL server is listening
-DB_NAME=""               # The name of the PostgreSQL database
-DB_PASSWORD=""           # The password for the PostgreSQL user
+    # PostgreSQL Configuration (used if IS_POSTGRES is set to 1)
+    DB_USERNAME=""           # The username for the PostgreSQL database
+    DB_HOSTNAME=""           # The hostname or IP address of the PostgreSQL server
+    DB_PORT=""               # The port number on which the PostgreSQL server is listening
+    DB_NAME=""               # The name of the PostgreSQL database
+    DB_PASSWORD=""           # The password for the PostgreSQL user
 
-# Secret key used for encoding and decoding JWT tokens
-SECRET_KEY="your_secret_key"
+    # Secret key used for encoding and decoding JWT tokens
+    SECRET_KEY="your_secret_key"
 
-# Algorithm used for encoding JWT tokens
-ALGORITHM="HS256"       # The algorithm used to sign JWT tokens. HS256 is a common choice.
+    # Algorithm used for encoding JWT tokens
+    ALGORITHM="HS256"       # The algorithm used to sign JWT tokens. HS256 is a common choice.
 
-# Access token expiration time in minutes
-ACCESS_TOKEN_EXPIRE_MINUTES=30
+    # Access token expiration time in minutes
+    ACCESS_TOKEN_EXPIRE_MINUTES=30
+```
