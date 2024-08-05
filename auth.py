@@ -61,7 +61,6 @@ def create_access_token(data: dict):
         The token will include an 'exp' claim indicating the expiration time, which is set to the current time plus the number of minutes specified by `ACCESS_TOKEN_EXPIRE_MINUTES`.
     """
     to_encode = data.copy()
-    print(to_encode)
     expire = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     to_encode.update({"exp": expire})
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
