@@ -1,10 +1,13 @@
 import os
+import sys
+import importlib
 import pytest
 from unittest.mock import patch
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.engine import Engine
   # Adjust according to your project structure
+
 
 @pytest.fixture
 def mock_env_variables():
@@ -22,39 +25,62 @@ def mock_env_variables():
         yield
 
 
-def test_database_url_sqlite(mock_env_variables):
+@pytest.mark.parametrize("is_postgres, expected_database", [
+    ("1", "testdb"),
+    ("0", "database.db")
+])
+def test_database_name(is_postgres,expected_database,mock_env_variables):
     """
     Test the database URL is correctly set for SQLite.
     """
-    from ..database import engine
-    assert engine.url.database == "database.db"
+    with patch.dict(os.environ, {
+        "IS_POSTGRES": is_postgres
+    }):
+        database_module_name = 'api.database'  
+        if database_module_name in sys.modules:
+            importlib.reload(sys.modules[database_module_name])
+        from ..database import engine
+        assert engine.url.database == expected_database
 
-def test_engine_creation_sqlite(mock_env_variables):
+
+
+@pytest.mark.parametrize("is_postgres", [
+    ("1"),
+    ("0")
+])
+def test_engine_creation(is_postgres,mock_env_variables):
     """
     Test the creation of the SQLAlchemy engine for SQLite.
     """
-    from ..database import engine
-    assert isinstance(engine, Engine)  # Check if engine is an instance of Engine
+    with patch.dict(os.environ, {
+        "IS_POSTGRES": is_postgres
+    }):
+        database_module_name = 'api.database'  
+        if database_module_name in sys.modules:
+            importlib.reload(sys.modules[database_module_name])
+        from ..database import engine
+        assert isinstance(engine, Engine)  # Check if engine is an instance of Engine
 
-def test_database_url_postgres(mock_env_variables):
+
+
+@pytest.mark.parametrize("is_postgres, expected_url", [
+    ("1", "postgresql://user:***@localhost:5432/testdb"),
+    ("0", "sqlite:///database.db")
+])
+def test_database_url(is_postgres, expected_url,mock_env_variables):
     """
     Test the database URL is correctly set for postgres.
     """
     with patch.dict(os.environ, {
-        "IS_POSTGRES": "1"
+        "IS_POSTGRES": is_postgres
     }):
-        from ..database import engine
-        assert engine.url.database == "testdb"
+        database_module_name = 'api.database'  
+        if database_module_name in sys.modules:
+            importlib.reload(sys.modules[database_module_name])
+        from api.database import engine
+        assert str(engine.url) == expected_url
 
-def test_engine_creation_postgres(mock_env_variables):
-    """
-    Test the creation of the SQLAlchemy engine for postgres.
-    """
-    with patch.dict(os.environ, {
-        "IS_POSTGRES": "1"
-    }):
-        from ..database import engine
-        assert isinstance(engine, Engine)  # Check if engine is an instance of Engine
+
 
 
 def test_session_creation(mock_env_variables):
@@ -65,6 +91,8 @@ def test_session_creation(mock_env_variables):
     session = Session()
     assert session is not None
     session.close()
+
+
 
 def test_get_db_function(mock_env_variables):
     """
