@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://StevenDelval.github.io/template_api/api/tests/test_database/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>test_database - template_api</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "test_database";
+        var mkdocs_page_input_path = "api/tests/test_database.md";
+        var mkdocs_page_url = "/template_api/api/tests/test_database/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> template_api
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Accueil</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Documentation</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../introduction/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >API</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../../main/">main</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../database/">database</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../models/">models</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../crud/">crud</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../auth/">auth</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" >router</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../router/user_router/">user_router</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../router/data_router/">data_router</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" >tests</a>
+    <ul class="current">
+                <li class="toctree-l3 current"><a class="reference internal current" href="#">test_database</a>
+    <ul class="current">
+    <li class="toctree-l4"><a class="reference internal" href="#api.tests.test_database">test_database</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#api.tests.test_database.mock_env_variables">mock_env_variables</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#api.tests.test_database.test_database_name">test_database_name</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#api.tests.test_database.test_database_url">test_database_url</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#api.tests.test_database.test_engine_creation">test_engine_creation</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#api.tests.test_database.test_get_db_function">test_get_db_function</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#api.tests.test_database.test_session_creation">test_session_creation</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">template_api</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Documentation</li>
+          <li class="breadcrumb-item">API</li>
+          <li class="breadcrumb-item">tests</li>
+      <li class="breadcrumb-item active">test_database</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/StevenDelval/template_api/edit/master/docs/api/tests/test_database.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="the-test-of-database">The test of database</h1>
+<p>This document describes the tests associated with the database module, including the testing of database configurations and session management. The tests ensure that database URLs are set correctly, sessions are created properly, and the get_db function works as expected.</p>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="api.tests.test_database"></a>
+    <div class="doc doc-contents first">
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="api.tests.test_database.mock_env_variables" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">mock_env_variables</span><span class="p">()</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Fixture to mock environment variables for testing.</p>
+
+            <details class="quote">
+              <summary>Source code in <code>api/tests/test_database.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span> <span class="nf">mock_env_variables</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fixture to mock environment variables for testing.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">patch</span><span class="o">.</span><span class="n">dict</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">,</span> <span class="p">{</span>
+        <span class="s2">&quot;IS_POSTGRES&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DB_USERNAME&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DB_HOSTNAME&quot;</span><span class="p">:</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DB_PORT&quot;</span><span class="p">:</span> <span class="s2">&quot;5432&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DB_NAME&quot;</span><span class="p">:</span> <span class="s2">&quot;testdb&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DB_PASSWORD&quot;</span><span class="p">:</span> <span class="s2">&quot;password&quot;</span>
+    <span class="p">}):</span>
+        <span class="k">yield</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="api.tests.test_database.test_database_name" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">test_database_name</span><span class="p">(</span><span class="n">is_postgres</span><span class="p">,</span> <span class="n">expected_database</span><span class="p">,</span> <span class="n">mock_env_variables</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Test if the database URL is correctly set based on the environment variable.</p>
+<p>This function mocks the environment variable <code>IS_POSTGRES</code> to simulate
+different database configurations. It reloads the <code>api.database</code> module
+to ensure that any changes in the configuration are picked up, and then
+verifies that the database URL's database name matches the expected value.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>is_postgres</code></b>
+                  (<code>bool</code>)
+              –
+              <div class="doc-md-description">
+                <p>If True, simulate a PostgreSQL environment; otherwise, simulate SQLite.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>expected_database</code></b>
+                  (<code>str</code>)
+              –
+              <div class="doc-md-description">
+                <p>The expected database name in the URL.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>mock_env_variables</code></b>
+                  (<code>dict</code>)
+              –
+              <div class="doc-md-description">
+                <p>A dictionary of environment variables to mock (not used in the function).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code>AssertionError</code>
+              –
+              <div class="doc-md-description">
+                <p>If the actual database name does not match <code>expected_database</code>.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+            <details class="quote">
+              <summary>Source code in <code>api/tests/test_database.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">&quot;is_postgres, expected_database&quot;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;testdb&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="s2">&quot;database.db&quot;</span><span class="p">)</span>
+<span class="p">])</span>
+<span class="k">def</span> <span class="nf">test_database_name</span><span class="p">(</span><span class="n">is_postgres</span><span class="p">,</span> <span class="n">expected_database</span><span class="p">,</span> <span class="n">mock_env_variables</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test if the database URL is correctly set based on the environment variable.</span>
+
+<span class="sd">    This function mocks the environment variable `IS_POSTGRES` to simulate</span>
+<span class="sd">    different database configurations. It reloads the `api.database` module</span>
+<span class="sd">    to ensure that any changes in the configuration are picked up, and then</span>
+<span class="sd">    verifies that the database URL&#39;s database name matches the expected value.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        is_postgres (bool): If True, simulate a PostgreSQL environment; otherwise, simulate SQLite.</span>
+<span class="sd">        expected_database (str): The expected database name in the URL.</span>
+<span class="sd">        mock_env_variables (dict): A dictionary of environment variables to mock (not used in the function).</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        AssertionError: If the actual database name does not match `expected_database`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">patch</span><span class="o">.</span><span class="n">dict</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">,</span> <span class="p">{</span>
+        <span class="s2">&quot;IS_POSTGRES&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">is_postgres</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="p">}):</span>
+        <span class="n">database_module_name</span> <span class="o">=</span> <span class="s1">&#39;api.database&#39;</span>
+        <span class="k">if</span> <span class="n">database_module_name</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+            <span class="n">importlib</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">database_module_name</span><span class="p">])</span>
+        <span class="kn">from</span> <span class="nn">..database</span> <span class="kn">import</span> <span class="n">engine</span>
+        <span class="k">assert</span> <span class="n">engine</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">database</span> <span class="o">==</span> <span class="n">expected_database</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="api.tests.test_database.test_database_url" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">test_database_url</span><span class="p">(</span><span class="n">is_postgres</span><span class="p">,</span> <span class="n">expected_url</span><span class="p">,</span> <span class="n">mock_env_variables</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Test if the database URL is correctly set based on the environment variable.</p>
+<p>This function mocks the environment variable <code>IS_POSTGRES</code> to simulate
+different database configurations (e.g., PostgreSQL or SQLite). It reloads
+the <code>api.database</code> module to ensure that any changes in configuration are
+applied, and then verifies that the database URL matches the expected value.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>is_postgres</code></b>
+                  (<code>bool</code>)
+              –
+              <div class="doc-md-description">
+                <p>If True, simulate a PostgreSQL environment; otherwise, simulate SQLite.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>expected_url</code></b>
+                  (<code>str</code>)
+              –
+              <div class="doc-md-description">
+                <p>The expected database URL.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>mock_env_variables</code></b>
+                  (<code>dict</code>)
+              –
+              <div class="doc-md-description">
+                <p>A dictionary of environment variables to mock (not used in this function).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code>AssertionError</code>
+              –
+              <div class="doc-md-description">
+                <p>If the actual database URL does not match <code>expected_url</code>.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+            <details class="quote">
+              <summary>Source code in <code>api/tests/test_database.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">&quot;is_postgres, expected_url&quot;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;postgresql://user:***@localhost:5432/testdb&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="s2">&quot;sqlite:///database.db&quot;</span><span class="p">)</span>
+<span class="p">])</span>
+<span class="k">def</span> <span class="nf">test_database_url</span><span class="p">(</span><span class="n">is_postgres</span><span class="p">,</span> <span class="n">expected_url</span><span class="p">,</span> <span class="n">mock_env_variables</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test if the database URL is correctly set based on the environment variable.</span>
+
+<span class="sd">    This function mocks the environment variable `IS_POSTGRES` to simulate</span>
+<span class="sd">    different database configurations (e.g., PostgreSQL or SQLite). It reloads</span>
+<span class="sd">    the `api.database` module to ensure that any changes in configuration are</span>
+<span class="sd">    applied, and then verifies that the database URL matches the expected value.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        is_postgres (bool): If True, simulate a PostgreSQL environment; otherwise, simulate SQLite.</span>
+<span class="sd">        expected_url (str): The expected database URL.</span>
+<span class="sd">        mock_env_variables (dict): A dictionary of environment variables to mock (not used in this function).</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        AssertionError: If the actual database URL does not match `expected_url`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">patch</span><span class="o">.</span><span class="n">dict</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">,</span> <span class="p">{</span>
+        <span class="s2">&quot;IS_POSTGRES&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">is_postgres</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="p">}):</span>
+        <span class="n">database_module_name</span> <span class="o">=</span> <span class="s1">&#39;api.database&#39;</span>
+        <span class="k">if</span> <span class="n">database_module_name</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+            <span class="n">importlib</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">database_module_name</span><span class="p">])</span>
+        <span class="kn">from</span> <span class="nn">api.database</span> <span class="kn">import</span> <span class="n">engine</span>
+        <span class="k">assert</span> <span class="nb">str</span><span class="p">(</span><span class="n">engine</span><span class="o">.</span><span class="n">url</span><span class="p">)</span> <span class="o">==</span> <span class="n">expected_url</span>  <span class="c1"># Check if the actual database URL matches the expected URL</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="api.tests.test_database.test_engine_creation" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">test_engine_creation</span><span class="p">(</span><span class="n">is_postgres</span><span class="p">,</span> <span class="n">mock_env_variables</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Test the creation of the SQLAlchemy engine based on the environment variable.</p>
+<p>This function mocks the environment variable <code>IS_POSTGRES</code> to simulate
+different database configurations. It reloads the <code>api.database</code> module
+to ensure that the latest configuration is used and verifies that the
+created SQLAlchemy engine is an instance of <code>Engine</code>.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>is_postgres</code></b>
+                  (<code>bool</code>)
+              –
+              <div class="doc-md-description">
+                <p>If True, simulate a PostgreSQL environment; otherwise, simulate SQLite.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>mock_env_variables</code></b>
+                  (<code>dict</code>)
+              –
+              <div class="doc-md-description">
+                <p>A dictionary of environment variables to mock (not used in the function).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code>AssertionError</code>
+              –
+              <div class="doc-md-description">
+                <p>If the created engine is not an instance of <code>Engine</code>.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+            <details class="quote">
+              <summary>Source code in <code>api/tests/test_database.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">&quot;is_postgres&quot;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">)</span>
+<span class="p">])</span>
+<span class="k">def</span> <span class="nf">test_engine_creation</span><span class="p">(</span><span class="n">is_postgres</span><span class="p">,</span> <span class="n">mock_env_variables</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test the creation of the SQLAlchemy engine based on the environment variable.</span>
+
+<span class="sd">    This function mocks the environment variable `IS_POSTGRES` to simulate</span>
+<span class="sd">    different database configurations. It reloads the `api.database` module</span>
+<span class="sd">    to ensure that the latest configuration is used and verifies that the</span>
+<span class="sd">    created SQLAlchemy engine is an instance of `Engine`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        is_postgres (bool): If True, simulate a PostgreSQL environment; otherwise, simulate SQLite.</span>
+<span class="sd">        mock_env_variables (dict): A dictionary of environment variables to mock (not used in the function).</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        AssertionError: If the created engine is not an instance of `Engine`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">patch</span><span class="o">.</span><span class="n">dict</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">,</span> <span class="p">{</span>
+        <span class="s2">&quot;IS_POSTGRES&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">is_postgres</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="p">}):</span>
+        <span class="n">database_module_name</span> <span class="o">=</span> <span class="s1">&#39;api.database&#39;</span>
+        <span class="k">if</span> <span class="n">database_module_name</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+            <span class="n">importlib</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">database_module_name</span><span class="p">])</span>
+        <span class="kn">from</span> <span class="nn">..database</span> <span class="kn">import</span> <span class="n">engine</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">engine</span><span class="p">,</span> <span class="n">Engine</span><span class="p">)</span>  <span class="c1"># Check if engine is an instance of Engine</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="api.tests.test_database.test_get_db_function" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">test_get_db_function</span><span class="p">(</span><span class="n">mock_env_variables</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Test the <code>get_db</code> function to ensure it yields a session and cleans up properly.</p>
+<p>This function tests the <code>get_db</code> generator function to ensure that it:
+1. Yields a valid session object.
+2. Properly raises <code>StopIteration</code> after the session is closed, indicating that no more sessions are available.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>mock_env_variables</code></b>
+                  (<code>dict</code>)
+              –
+              <div class="doc-md-description">
+                <p>A dictionary of environment variables to mock (not used in this function).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code>AssertionError</code>
+              –
+              <div class="doc-md-description">
+                <p>If the session is <code>None</code> or if <code>StopIteration</code> is not raised after the session is closed.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+            <details class="quote">
+              <summary>Source code in <code>api/tests/test_database.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">test_get_db_function</span><span class="p">(</span><span class="n">mock_env_variables</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test the `get_db` function to ensure it yields a session and cleans up properly.</span>
+
+<span class="sd">    This function tests the `get_db` generator function to ensure that it:</span>
+<span class="sd">    1. Yields a valid session object.</span>
+<span class="sd">    2. Properly raises `StopIteration` after the session is closed, indicating that no more sessions are available.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        mock_env_variables (dict): A dictionary of environment variables to mock (not used in this function).</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        AssertionError: If the session is `None` or if `StopIteration` is not raised after the session is closed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">..database</span> <span class="kn">import</span> <span class="n">get_db</span>
+
+    <span class="n">db_gen</span> <span class="o">=</span> <span class="n">get_db</span><span class="p">()</span>
+
+    <span class="c1"># Fetch the session from the generator</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">db_gen</span><span class="p">)</span>
+
+    <span class="c1"># Ensure the session is not None</span>
+    <span class="k">assert</span> <span class="n">db</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;The database session is None.&quot;</span>
+
+    <span class="c1"># Close the session to ensure proper cleanup</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="c1"># Ensure that no more sessions are available after closing the session</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">StopIteration</span><span class="p">):</span>
+        <span class="nb">next</span><span class="p">(</span><span class="n">db_gen</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="api.tests.test_database.test_session_creation" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">test_session_creation</span><span class="p">(</span><span class="n">mock_env_variables</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Test that the session factory creates a valid SQLAlchemy session.</p>
+<p>This function imports the <code>Session</code> factory from the <code>database</code> module and
+verifies that it can create a session instance. The test ensures that the
+session is not <code>None</code> and then closes it to ensure proper resource cleanup.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>mock_env_variables</code></b>
+                  (<code>dict</code>)
+              –
+              <div class="doc-md-description">
+                <p>A dictionary of environment variables to mock (not used in this function).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code>AssertionError</code>
+              –
+              <div class="doc-md-description">
+                <p>If the session is <code>None</code> or if there are any issues creating the session.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+            <details class="quote">
+              <summary>Source code in <code>api/tests/test_database.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">test_session_creation</span><span class="p">(</span><span class="n">mock_env_variables</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test that the session factory creates a valid SQLAlchemy session.</span>
+
+<span class="sd">    This function imports the `Session` factory from the `database` module and</span>
+<span class="sd">    verifies that it can create a session instance. The test ensures that the</span>
+<span class="sd">    session is not `None` and then closes it to ensure proper resource cleanup.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        mock_env_variables (dict): A dictionary of environment variables to mock (not used in this function).</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        AssertionError: If the session is `None` or if there are any issues creating the session.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">..database</span> <span class="kn">import</span> <span class="n">Session</span>  <span class="c1"># Import Session from the database module</span>
+
+    <span class="c1"># Create a session using the session factory</span>
+    <span class="n">session</span> <span class="o">=</span> <span class="n">Session</span><span class="p">()</span>
+
+    <span class="c1"># Check if the session is created and is not None</span>
+    <span class="k">assert</span> <span class="n">session</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Session creation failed: Session is None.&quot;</span>
+
+    <span class="c1"># Close the session to clean up resources</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../router/data_router/" class="btn btn-neutral float-left" title="data_router"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/StevenDelval/template_api" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../router/data_router/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
