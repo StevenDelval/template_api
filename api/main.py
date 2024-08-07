@@ -1,10 +1,14 @@
 from fastapi import FastAPI, Depends
-from fastapi.params import Depends
+from fastapi.responses import RedirectResponse
 from models import Base
 from database import engine
 import router.user_router as user_router, auth, router.data_router as data_router
 
 app = FastAPI()
+
+@app.get("/", include_in_schema=False)
+async def redirect_to_docs():
+    return RedirectResponse(url="/docs")
 
 # Create all tables in the database
 Base.metadata.create_all(bind=engine)
