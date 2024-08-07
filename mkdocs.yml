@@ -12,6 +12,8 @@ nav: # on définit l'architecture de la doc en faisant les liens vers les fichie
           - router:
             - user_router: api/router/user_router.md
             - data_router: api/router/data_router.md
+          - tests:
+            - test_database: api/tests/test_database.md
 
 theme:
   name: readthedocs #on peut utiliser d'autre theme de doc
